@@ -1,0 +1,80 @@
+  [1m[35m (596.1ms)[0m  [1m[35mCREATE DATABASE "blog_challenge_development" ENCODING = 'unicode'[0m
+  [1m[35m (308.9ms)[0m  [1m[35mCREATE DATABASE "blog_challenge_test" ENCODING = 'unicode'[0m
+  [1m[35m (63.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (5.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1131589309581606540)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (20.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (2.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-05-24 23:16:47.218893"], ["updated_at", "2023-05-24 23:16:47.218893"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(1131589309581606540)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1131589309581606540)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (2.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateBlogs (20230524232013)
+  [1m[36mTRANSACTION (15.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (9.0ms)[0m  [1m[35mCREATE TABLE "blogs" ("id" bigserial primary key, "title" character varying, "content" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (22.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230524232013"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(1131589309581606540)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2023-05-24 16:29:50 -0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/learnacademy/.rvm/gems/ruby-3.2.0/gems/railties-7.0.5/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/learnacademy/.rvm/gems/ruby-3.2.0/gems/railties-7.0.5/lib/rails/templates/rails/welcome/index.html.erb (Duration: 13.3ms | Allocations: 634)
+Completed 200 OK in 101ms (Views: 31.2ms | ActiveRecord: 0.0ms | Allocations: 7370)
+
+
+Started GET "/" for ::1 at 2023-05-24 16:30:54 -0700
+Processing by BlogController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering blog/index.html.erb within layouts/application
+  [1m[36mBlog Load (1.4ms)[0m  [1m[34mSELECT "blogs".* FROM "blogs"[0m
+  ↳ app/views/blog/index.html.erb:4
+  Rendered blog/index.html.erb within layouts/application (Duration: 30.3ms | Allocations: 889)
+  Rendered layout layouts/application.html.erb (Duration: 1466.2ms | Allocations: 86212)
+Completed 200 OK in 1499ms (Views: 1474.4ms | ActiveRecord: 1.4ms | Allocations: 87840)
+
+
+Started GET "/" for ::1 at 2023-05-24 16:33:03 -0700
+Processing by BlogController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering blog/index.html.erb within layouts/application
+  [1m[36mBlog Load (0.5ms)[0m  [1m[34mSELECT "blogs".* FROM "blogs"[0m
+  ↳ app/views/blog/index.html.erb:4
+  Rendered blog/index.html.erb within layouts/application (Duration: 6.0ms | Allocations: 733)
+  Rendered layout layouts/application.html.erb (Duration: 29.2ms | Allocations: 3366)
+Completed 200 OK in 40ms (Views: 33.6ms | ActiveRecord: 0.5ms | Allocations: 4189)
+
+
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBlog Create (3.7ms)[0m  [1m[32mINSERT INTO "blogs" ("title", "content", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Music"], ["content", nil], ["created_at", "2023-05-24 23:44:22.503912"], ["updated_at", "2023-05-24 23:44:22.503912"]]
+  [1m[36mTRANSACTION (25.7ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/" for ::1 at 2023-05-24 16:44:32 -0700
+Processing by BlogController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering blog/index.html.erb within layouts/application
+  [1m[36mBlog Load (1.0ms)[0m  [1m[34mSELECT "blogs".* FROM "blogs"[0m
+  ↳ app/views/blog/index.html.erb:4
+  Rendered blog/index.html.erb within layouts/application (Duration: 472.3ms | Allocations: 17487)
+  Rendered layout layouts/application.html.erb (Duration: 539.4ms | Allocations: 19845)
+Completed 200 OK in 541ms (Views: 540.3ms | ActiveRecord: 330.2ms | Allocations: 20124)
+
+
+  [1m[36mTRANSACTION (22.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBlog Create (0.5ms)[0m  [1m[32mINSERT INTO "blogs" ("title", "content", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Favorite Animes"], ["content", "Cowboy Bebop, Samurai Champloo"], ["created_at", "2023-05-24 23:48:06.108052"], ["updated_at", "2023-05-24 23:48:06.108052"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/" for ::1 at 2023-05-24 16:48:09 -0700
+Processing by BlogController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering blog/index.html.erb within layouts/application
+  [1m[36mBlog Load (0.3ms)[0m  [1m[34mSELECT "blogs".* FROM "blogs"[0m
+  ↳ app/views/blog/index.html.erb:4
+  Rendered blog/index.html.erb within layouts/application (Duration: 10.6ms | Allocations: 597)
+  Rendered layout layouts/application.html.erb (Duration: 19.2ms | Allocations: 2932)
+Completed 200 OK in 21ms (Views: 19.5ms | ActiveRecord: 0.3ms | Allocations: 3201)
+
+
